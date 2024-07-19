@@ -191,24 +191,6 @@ def user_input_features(example_data):
         min_v = round(example_data[widget_key].min(), 1).item()
         max_v = round(example_data[widget_key].max(), 1).item()
         featureValues[widget_key] = st.slider(label=input_widgets[widget_key], min_value=min_v, max_value=max_v, value=min_v)    
-           
-    # Create a BMI calculation container
-    with st.container():
-        st.caption("Don't know your BMI? Enter height and weight, we will calculate for you")
-        st.caption("Note: BMI = weight (kg) / [height (m)^2]")
-        st.write("<div class='bmi-calculation'>Calculate BMI (Optional)</div>", unsafe_allow_html=True)
-
-        col3, space, col4 = st.columns((10,1,10))
-        with col3:
-            height = st.number_input("Height (meters)",0.5, 2.5, step=0.25)
-            st.write("""<div class='bmi-calculation'/>""", unsafe_allow_html=True)
-        with col4:
-            weight = st.number_input("Weight (kilograms)",10, 200, step=10)
-
-        # Calculate BMI if the user entered values
-        if height != 0.5 or weight != 10:
-            bmi = round(weight/(height**2), 2)
-            featureValues["BMI"] = bmi
 
     # Create radio input widgets
     for widget_key, widget_label in radio_input_widgets.items():
@@ -259,51 +241,4 @@ def main():
         st.title(page_title)
 
         # Banner image
-        load_banner()
-
-        # Some basic information
-        st.markdown("""
-                    This app uses machine learning to predict whether you have osteoporosis.
-                    You may find the following notes helpful:
-            """)
-        with st.expander("What is osteoporosis?"):
-            st.markdown(osteo_basics)
-        with st.expander("How to use this app?"):
-            st.info(instruction_prediction)
-            st.success(instruction_visualization)
-
-
-        st.subheader('Please answer the following questions')
-        # Get all features (except the target variable)
-        example_features = example_data.drop(columns=[TARGET_NAME])
-                
-        with st.form(key='form1'):
-            df_input = user_input_features(example_features)
-            submit_form = st.form_submit_button(label="Predict", type="primary", use_container_width=True)
-
-        # After clicking the Predict button
-        if submit_form:
-            # Displays the user input features
-            st.subheader("What you've entered")
-            st.table(df_input.style.format(precision=2))
-
-            # Preprocess input data
-            df_input_preprocessed = preprocess_input_data(df_input, example_features, mean, std)
-
-            # Predict
-            prediction_str, prediction_prob = get_prediction(st.session_state["model"], df_input_preprocessed)
-
-            st.subheader('Prediction Results')
-            col1, col2 = st.columns(2)
-            col1.metric("Osteoporosis?", prediction_str)
-            col2.metric("Confidence Score of Having Osteoporosis (%)", round(prediction_prob*100, 1))
-
-            # Show disclaimer
-            st.markdown('##')
-            st.caption(disclaimer_about_result)
-
-    else:
-        data_visualization.run(example_data)
-
-if __name__ == '__main__':
-    main()
+        load_banner
