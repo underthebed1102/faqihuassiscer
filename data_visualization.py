@@ -31,7 +31,7 @@ NUM_CATE_MAPPING_DICT = {
 # Global variables for UI
 page_title = "Osteoporosis Prevalence"
 info_text = """
-            This page shows osteoporosis prevalence of the National Health and Nutrition Examination Survey (NHANES) data for years 2013-2014, and 2017-2020, among 5831 respondents aged 40-80 (and plus).
+            This page shows osteoporosis prevalence of the National Health and Nutrition Examination Survey (NHANES) data for years 2017-2020, among 5831 respondents aged 40-80 (and plus).
         """
 
 def get_prevalence(data, feature, target):
