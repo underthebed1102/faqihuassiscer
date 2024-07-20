@@ -22,8 +22,7 @@ error_msg = f"""Oops, something went wrong. Please contact the developer at {DEV
 page_title = "Osteoporosis Prediction"
 osteo_basics = """
             Osteoporosis, the most common bone disease, occurs when bone mineral density and bone mass decrease, 
-            or there are changes in bone structure and strength. In 2022, an estimated 20.2 million people in the United States aged 50 
-            and over had osteoporosis, and an estimated 43.3 million others had low bone mass. However, it is a silent disease that 
+            or there are changes in bone structure and strength.Accroding to WHO there are around 200 million peaple in the world who suffer from osteoporosis.According to the International Osteoporosis Foundation (IOF) women aged 50-80 years are susceptible to osteoporosis at a ratio 1:4 .However, it is a silent disease that 
             most people with osteoporosis do not know they have it until they break a bone.
         """
 instruction_prediction = """
