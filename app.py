@@ -44,7 +44,7 @@ disclaimer_about_result = """
 
 input_widgets = {
     "Gender": "Gender",
-    "Ras": "Ras",
+    "Race": "Race",
     "Age": "Age",
     "Sleep Duration (Hours)": "How much sleep do you get (hours)?",
     "BMI": "Body Mass Index (BMI)",
